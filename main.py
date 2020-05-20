@@ -50,10 +50,13 @@ if __name__ == "__main__":
     source = read_excel_data(InputData, "SourceNum")
     
     # Pertes thermiques fixes (thetaijfix)
-    pertes_thermiques_fixes = read_excel(InputData, "vfix(thetaijfix)")
+    pertesThermiquesFixes = read_excel(InputData, "vfix(thetaijfix)")
     
     # Pertes thermiques variables (thetaijvar)
-    pertes_thermiques_variables = read_excel(InputData, "vvar(thetaijvar)")
+    pertesThermiquesVariables = read_excel(InputData, "vvar(thetaijvar)")
+    
+    # Fixed Unit Cost (?)
+    fixedUnitCost = read_excel(InputData, "FixedUnitCost")
     
     
     
