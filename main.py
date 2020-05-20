@@ -43,6 +43,8 @@ if __name__ == "__main__":
   ### Data importation ###
    
     card_V = read_excel_data(InputData, "Nodes")
+    set_V = [i for i in range(1, card_V + 1)]
+    
     
     
     
