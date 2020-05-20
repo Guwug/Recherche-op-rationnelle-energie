@@ -42,9 +42,18 @@ if __name__ == "__main__":
   
   ### Data importation ###
    
+    #Importation des sommets 
     card_V = read_excel_data(InputData, "Nodes")
     set_V = [i for i in range(1, card_V + 1)]
     
+    # Sommet source
+    source = read_excel_data(InputData, "SourceNum")
+    
+    # Pertes thermiques fixes (thetaijfix)
+    pertes_thermiques_fixes = read_excel(InputData, "vfix(thetaijfix)")
+    
+    # Pertes thermiques variables (thetaijvar)
+    pertes_thermiques_variables = read_excel(InputData, "vvar(thetaijvar)")
     
     
     
