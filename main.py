@@ -46,24 +46,65 @@ if __name__ == "__main__":
     set_V = [i for i in range(1, card_V + 1)]
     
     # Sommet source
-    source = read_excel_data(InputData, "SourceNum")
+    v_0 = read_excel_data(InputData, "SourceNum")
 
     # Pertes thermiques fixes (thetaijfix)
-    pertesThermiquesFixes = read_excel(InputData, "vfix(thetaijfix)")
+    thetafix = read_excel(InputData, "vfix(thetaijfix)")
 
     # Pertes thermiques variables (thetaijvar)
-    pertesThermiquesVariables = read_excel(InputData, "vvar(thetaijvar)")
+    thetavar = read_excel(InputData, "vvar(thetaijvar)")
 
     # Fixed Unit Cost (?)
     fixedUnitCost = read_excel(InputData, "FixedUnitCost")
     
+    # Heat generation cost of source
+    cheat= read_excel_data(InputData, "cheat(ciheat)")
     
-    set_E = [i for i in range(
+    # Coûts variables dinvestissement    
+    cvar = read_excel(InputData, "cvar(cijvar)")
+    
+    # Couts de maintenance
+    cfix = read_excel(InputData, "com(cijom)")
+    
+    # Revenus
+    crev = read_excel(InputData, "crev(cijrev)")
+    
+    # Temps de fonctionnement de la production
+    Tflh = read_excel(InputData, "Tflh(Tiflh)")
+    
+   #Betta 
+   betta = read_excel(InputData, "Betta") 
+
+   # Lambda
+   lambda = read_excel(InputData, "Lambda")
+   
+   # Alpha 
+   alpha = read_excel(InputData, "Alpha")
+   
+   # Edges demand peak
+   d = read_excel(InputData, "EdgesDemandPeak(dij)")
+   
+   #Edges demand annual 
+   D = read_excel (InputData, "EdgesDemandAnnual(Dij)")
+ 
+   # Capacité maximale des tuyaux
+   Cmax = read_excel(InputData, "Cmax(cijmax)")
+ 
+  # Capacité maximale de la source 
+  Qmax = read_excel(InputData, "SourceMaxCap(Qimax)")
+ 
+   # Pénalités de non satisfaction de la demande
+   pumd = read_excel(InputData, "pumd(pijumd)")
+   
+   # longueurs des canaux 
+   l= {}
+   NodesCord = read_excel(InputData, "NodesCord")
+   for i in range(1,int(len(NodesCord)/2)+1):
+     for j in range(1,int(len(NodesCord)/2)+1):
+         l[i,j] = distance.euclidean([NodesCord[i,1],NodesCord[i,2]],[NodesCord[j,1],NodesCord[j,2]]);
+ 
+ 
   ### create the decision variables###
-    x_var = LpVariable
-    
-    
-    
-    
-    
-    
+    x_var = LpVariable.dicts('x', (set_V,set_V), lowBound = 0, upBound = 1, cat = 'Integer')
+    Pin_var = LpVariable.dicts('Pin', (set_V,set_V), lowBound = 0, cat = 'Continous')
+    Pout_var = LpVariable.dicts('Pout', (set_V,set_V), lowBound = 0, cat = 'Continous')
