@@ -179,7 +179,7 @@ if __name__ == "__main__":
     variable_Inv_cost_lis = []
     for i in range(1, 9):
         for j in range(1, 9):
-            variable_Inv_cost_lis.append(alpha[0] * x_var[i][j] * cvar[i, j] * l[i, j] *
+            variable_Inv_cost_lis.append(alpha[0] * cvar[i, j] * l[i, j] *
                                          Pin_var[i][j])
 
     variable_investment_cost = lpSum(variable_Inv_cost_lis)
