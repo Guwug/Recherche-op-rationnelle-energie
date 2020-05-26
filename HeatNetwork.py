@@ -44,7 +44,7 @@ if __name__ == "__main__":
     ## Date will be imported in a list if they are one dimension or in a dictionary if they are in two dimensions
     ## with tuples as keys
 
-    v0 = 4  # This the Cord of the heat source
+    v0 =  read_excel_data(InputData, "SourceNum")  # This the Cord of the heat source
 
     # The excel file that we want to read
     InputData = "InputDataEnergySmallInstance.xlsx"
